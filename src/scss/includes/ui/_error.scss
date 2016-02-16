@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    #error
+\*------------------------------------*/
+
+.errorpage {
+    @include full;
+    background: url('../images/error_image.png') center;
+    background-size: cover;
+}
+
+
+
+.errorpage__outer {
+    display: table;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.errorpage__inner {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+
+.errorpage__popup {
+
+    @include box-sizing;
+    text-align: center;
+    background: $color-bg;
+    margin: 0 auto;
+    width: 844px;
+    padding: 160px 140px;
+
+    p {
+        font-size: 26px;
+        line-height: 31px;
+        & + p {
+            margin-top: 30px;
+        }
+    }
+    
+    @include breakpoint(mobile) {
+        width: 90%;
+        padding: 50px;
+        max-width: 360px;
+        p {
+            font-size: 15px;
+            line-height: 18px;
+        }
+    }
+}

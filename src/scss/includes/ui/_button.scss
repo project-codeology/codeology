@@ -1,0 +1,182 @@
+/*------------------------------------*\
+    #buttons
+\*------------------------------------*/
+
+.button {
+
+    @include inline-block;
+    background: $color-bg;
+    border: 1px solid $color-line;
+    font-size: 15px;
+    height: 26px;
+    line-height: 24px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none !important;
+
+    span, i {
+        pointer-events: none;
+        @include transition(transform $time-fast $easing);
+        height: 200%;
+        display: block;
+        position: relative;
+    }
+
+    @include hover {
+        @extend %button-hover;
+    }
+}
+
+
+
+%button-hover {
+    span, i {
+        @include transform(translate(0,-50%));
+    }
+}
+
+
+
+.button--text {
+    
+    @extend .button;
+    span { padding: 0 26px; }
+
+    span:after {
+        background: $color-text;
+        color: $color-bg;
+        content: attr(data-text);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+    }
+}
+
+
+
+.button--textsmall {
+
+    @extend .button--text;
+    span { padding: 0 10px; }
+
+    @include breakpoint(mobile) {
+        height: 20px;
+        line-height: 18px;
+        font-size: 12px;
+    }
+}
+
+
+
+.button--label {
+
+    display: block;
+
+    .button__icon {
+        @extend .button;
+        width: 26px;
+        pointer-events: none;
+    }
+
+    .button__label {
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 8px 2px;
+        background: $color-black;
+        line-height: 20px;
+        margin-top: 4px;
+        font-weight: bold;
+        pointer-events: none;
+    }
+
+    @include hover {
+        .button__icon i {
+            @include transform(translate(0,-50%));
+        }
+    }
+}
+
+
+
+.button--is-active {
+    background: $color-text;
+}
+
+
+
+
+
+
+
+
+.grid,
+.prev,
+.next,
+.fullscreen {
+    cursor: pointer;
+    @include transition(opacity $time*2 $easing, visibility 0s linear);
+    @include breakpoint(mobile) {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+        #ui.is-shown & {
+            @include transition(opacity $time*2 $easing);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+    .is-about-open & {
+        @include transition(opacity $time*2 $easing, visibility 0s linear $time*2);
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+
+
+.fullscreen {
+    position: absolute;
+    top: 70px;//110px;
+    right: $gutter;
+    z-index: 2;
+    @include z-index(button);
+    @include breakpoint(mobile) {
+        right: 20px;
+        top: 130px;
+    }
+    .mobile & { display: none; }
+}
+
+
+
+.grid {
+    position: absolute;
+    top: 70px;//110px;
+    right: $gutter+40px;
+    .mobile & { right: 50px; }
+    @include z-index(button);
+    @include breakpoint(mobile) {
+        top: 130px;
+        right: 60px;
+        .mobile & { right: 20px; }
+    }
+}
+
+
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    display: none;
+    @include z-index(button);
+}
+.prev { left: $gutter; }
+.next { right: $gutter; }

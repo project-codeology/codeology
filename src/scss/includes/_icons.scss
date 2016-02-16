@@ -1,0 +1,35 @@
+/*------------------------------------*\
+    #ICONS
+\*------------------------------------*/
+
+
+
+@mixin sprite($pos) {
+    background: url("../images/sprite.svg") $pos;
+}
+
+@mixin icon($x, $y, $width, $height){
+    @include sprite(-#{$x}px -#{$y}px);
+    @include inline-block;
+    height: #{$height}px;
+    width: #{$width}px;
+    overflow: hidden;
+    text-indent: #{$width}px;
+}
+
+
+
+// first row icons (each 26px wide):
+$icons: ( "close", "search", "fullscreen", "like", "liked", "share", "reset", "twitter", "fb", "gplus", "tumblr", "pinterest", "link", "info", "download", "wallpaper", "gif" );
+$n: 0;
+
+@each $icon in $icons {
+    .icon-#{$icon} { @include icon( $n*26, 0, 26, 26 ); }
+    $n: $n + 1;
+}
+
+
+
+// other icons:
+.icon-grid { @include icon(0,52,38,26); }
+.icon-arr { @include icon(0,104,36,30); }

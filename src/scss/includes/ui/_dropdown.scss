@@ -1,0 +1,43 @@
+/*------------------------------------*\
+    #dropdown
+\*------------------------------------*/
+
+.dropdown__wrap {
+
+    @include transition(z-index 0s linear $time);
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    z-index: 0;
+    margin-left: -20px;
+
+    .is-open & {
+        @include transition-delay(0s);
+        pointer-events: all;
+        z-index: 2;
+    }
+}
+
+
+
+.dropdown__inner {
+    
+    @include transform(translate3d(0,-100%,0));
+    @include transition(transform 0.3s $easing);
+    
+    background: $color-black;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    .is-open & { @include transform(translate3d(0,0%,0)); }
+}
+
+
+
+.dropdown__closer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

@@ -1,0 +1,32 @@
+.download {
+    text-align: center
+}
+
+.download__list {
+    margin-bottom: 15px;
+}
+
+.download__item {
+
+    @include inline-block;
+    border: 1px solid $color-text;
+    padding: 7px;
+    margin: 15px;
+    position: relative;
+
+    a { position: relative; z-index: 1; display: block; }
+    img { display: block; }
+
+    &:before {
+        @include full;
+        content: "";
+        display: block;
+        background: $color-text;
+        opacity: 0;
+        @include transition(opacity $time $easing);
+    }
+    
+    @include hover {
+        &:before { opacity: 1; }
+    }
+}

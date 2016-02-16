@@ -1,0 +1,218 @@
+/*------------------------------------*\
+    #header
+\*------------------------------------*/
+
+.header {
+    @include box-sizing;
+    @include z-index(header);
+    background-color: $color-bg;
+    height: 70px;
+    left: 0px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    @include breakpoint(mobile) {
+        height: auto;
+    }
+}
+
+
+
+.header__left,
+.header__right {
+    @include breakpoint(desktop) {
+        @include box-sizing;
+        padding: 20px $gutter;
+        height: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0;
+    }
+}
+
+.header__left { left: 0; }
+.header__right { right: 0; }
+
+.header__top,
+.header__bottom { position: relative; }
+
+.header__top { border-bottom: 1px solid $color-gray; padding: 12px 10px; z-index: 3; background: $color-bg; }
+.header__bottom { padding: 10px; z-index: 2; background: $color-bg; border-bottom: 1px solid $color-gray; }
+
+
+
+.header__title {
+    @include inline-block;
+    cursor: pointer;
+    .logo { margin-top: 3px; }
+}
+
+
+
+.header__breadcrumbs {
+    @include breakpoint(desktop) {
+        @include inline-block;
+    }
+    @include breakpoint(mobile) {
+        position: absolute;
+        left: 48px;
+        right: 90px;
+        top: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+
+
+.breadcrumbs__item {
+
+    @include inline-block;
+    border: 1px solid $color-line;
+    font-size: 15px;
+    height: 26px;
+    line-height: 25px;
+    padding: 0 38px 0 8px;
+    position: relative;
+    cursor: default;
+
+
+    &:before {
+        content: "";
+        @extend .icon-arr;
+        position: absolute;
+        left: -37px;
+        top: -2px;
+        display: none;
+    }
+    @include breakpoint(desktop) {
+        margin-left: 34px;
+        &:before { display: block; }
+    }
+    @include breakpoint(mobile) {
+        &:not(:first-child){ margin-left: 12px; }
+    }
+    
+    .button {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+    }
+}
+
+
+
+.header__search {
+    @include breakpoint(desktop) {
+        @include inline-block;
+        margin-left: 34px;
+        position: relative;
+        width: 400px;
+        .header__breadcrumbs:not(:empty) ~ & {
+            width: 28px;
+            margin-left: 12px;
+            &:before { display: none; }
+            .search__list { display: none; }
+            .search__input { padding-left: 0; }
+        }
+    }
+    
+    @include breakpoint(mobile) {
+        position: absolute;
+        right: 48px;
+        top: 10px;
+        left: 48px;
+        &:before { display: none; }
+        .header__breadcrumbs:not(:empty) ~ & {
+            display: none;
+            // width: 28px;
+            // left: auto;
+            // .search__input { padding-left: 0; }
+            // .search__list { display: none; }
+        }
+    }
+
+    &:before {
+        content: "";
+        @extend .icon-arr;
+        position: absolute;
+        left: -37px;
+        top: -1px;
+    }
+}
+
+
+
+.header__links {
+    @include inline-block;
+    .is-main-view & { display: none; }
+}
+
+
+
+.header__link {
+    @include inline-block;
+    @include size-in-ems(16,24);
+    font-weight: bold;
+    letter-spacing: -0.015em;
+    a { @include hover { text-decoration: underline; }}
+    .header__link + & { margin-left: 36px; }
+
+}
+
+
+
+.header__colophon {
+    @include breakpoint(desktop) {
+        @include inline-block;
+        @include size-in-ems(12,26);
+        margin-left: 60px;
+    }
+    @include breakpoint(mobile) {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        width: 120px;
+        text-align: right;
+        line-height: 16px;
+        font-size: 13px;
+    }
+    @include hover {
+        text-decoration: underline;
+    }
+}
+
+
+
+.header__share {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.header__share-list {
+    position: absolute;
+    .button__label { display: none; }
+    @include box-sizing;
+    border-bottom: 1px solid $color-gray;
+    background: $color-bg;
+    padding: 9px 10px;
+    display: table;
+    width: 100%;
+    z-index: 1;
+    top: 105px;
+    @include transform(translate3d(0,-100%,0));
+    @include transition(transform $time $easing);
+    &.is-open { @include transform(translate3d(0,0%,0)); }
+    li {
+        display: table-cell;
+        &:last-child { width: 28px; }
+    }
+}
+
+
+
+.header__info,
+.header__share {
+    &.is-active { @extend %button-hover; }
+}

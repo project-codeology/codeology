@@ -1,0 +1,206 @@
+/*------------------------------------*\
+    #grid
+\*------------------------------------*/
+
+.grid__item {
+
+    -webkit-touch-callout: none;
+    cursor: pointer;
+    position: absolute;
+    @include z-index(grid-item);
+    @include user-select();
+    @include transition(opacity $time*2 $easing);
+
+    @include breakpoint(mobile) {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+        #ui.is-shown & {
+            @include transition(opacity $time*2 $easing);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+    .is-about-open & {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+
+.grid__item--full {
+    @extend .grid__item;
+    @include full;
+    @include transition(none !important);
+}
+
+
+
+.grid__leftside,
+.grid__rightside {
+    position: absolute;
+    bottom: 10px;
+    @include breakpoint(desktop) { bottom: -6px+$gutter; }
+}
+
+
+.grid__leftside {
+    left: 10px;
+    white-space: nowrap;
+    @include breakpoint(desktop) {
+        left: 20px;
+        .grid__item--full & { left: $gutter; }
+    }
+}
+
+
+.grid__rightside {
+    right: 5px;
+    padding-top: 30px;
+    text-align: right;
+    // overflow: hidden;
+    @include breakpoint(desktop) {
+        right: 15px;
+        .grid__item--full & { right: -5px+$gutter; }
+    }
+}
+
+
+
+.grid__wrap {
+    position: relative;
+}
+
+
+
+.grid__title {
+    padding-right: 5px;
+    p {
+        @include size-in-ems(15,18);
+        font-weight: bold;
+        display: inline;
+        background: $color-bg;
+        box-shadow: 5px 0 0 $color-bg, -5px 0 0 $color-bg;
+        white-space: nowrap;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+
+.grid__project { top: -18px; }
+.grid__username { top: -36px; }
+
+
+.grid__text {
+    width: 200px;
+    padding-right: 5px;
+    display: inline-block;
+    p, ul, ol {
+        @include size-in-ems(15,18);
+        display: inline;
+        position: relative;
+        // max-width: 200px; 
+        padding-left: 0;
+        padding-right: 0;
+        background: $color-bg;
+        box-shadow: 5px 0 0 $color-bg, -5px 0 0 $color-bg;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        a {
+            text-decoration: underline;
+            @include hover {
+                font-weight: bold;
+            }
+        }
+    }
+    ul, ol {
+        right: -5px;
+    }
+    .language { margin-right: -5px; }
+    .desktop .grid__item:not(.grid__item--full) & { display: none; }
+}
+
+
+
+.grid__like,
+.grid__share,
+.grid__download {
+    @include inline-block;
+    -webkit-backface-visibility: hidden;
+    // margin-right: 40px;
+    width: 110px;
+    position: relative;
+    line-height: 30px;
+    @include breakpoint(mobile) { margin-right: 20px; }
+}
+
+.dropdown__list {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    li { margin-bottom: 8px; }
+    display: none;
+    .is-open & {
+        display: block;
+    }
+}
+
+.grid__like a.is-voted .icon-like {
+    @extend .icon-liked;
+    height: 52px;
+}
+
+.grid__share,
+.grid__download {
+    display: none;
+    .grid__item--full & { display: inline-block; }
+}
+
+
+
+
+.grid__checkbox {
+
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: none;
+    top: 0;
+    right: -4px;
+
+    .grid__item--full & { display: block; }
+    .mobile & { display: block; }
+
+    &:before,
+    &:after {
+        @include box-sizing;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 12px;
+        height: 12px;
+        margin: -6px;
+        line-height: 11px;
+        text-align: center;
+    }
+    &:before {
+        content: "";
+        border: 1px solid $color-line;
+        background: $color-bg;
+    }
+
+    &:after { content: "+"; font-size: 16px; }
+    .is-shown ~ &:after { content: "-"; }
+
+    @include hover {
+        &:before { background: $color-text; }
+        &:after { color: $color-bg; }
+    }
+
+}

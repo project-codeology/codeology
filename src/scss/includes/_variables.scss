@@ -1,0 +1,43 @@
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+
+
+
+// Colors
+
+$color-black:      #000000;
+$color-white:      #FFFFFF;
+$color-gray:       #6D6E71;
+
+$color-bg:         $color-black;
+$color-text:       $color-white;
+$color-line:       $color-white;
+
+$color-select-bg:  $color-white;
+$color-select-text:$color-black;
+
+
+
+// Fonts
+$font-default: 'BTMono', "Courier New", Courier, monospace;
+$baseFontSize: 15;
+$baseLineHeight: 18;
+
+
+
+// Sizes
+$size-mobile: 1000px;
+$gutter: 30px;
+
+
+
+// Animations
+$time: 0.4s;
+$time-fast: 0.2s;
+$easing: cubic-bezier(0.895, 0.03, 0.685, 0.22); // ease-out-quart
+
+
+
+// Z-Index elements arrays:
+$elements: container, grid-item, button, header, closer, popup;

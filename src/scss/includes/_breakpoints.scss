@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    #RESPONSIVE BREAKPOINTS
+\*------------------------------------*/
+
+
+
+@mixin breakpoint($point) {
+  
+  @if $point == desktop {
+    @media (min-width: $size-mobile) { @content; }
+  }
+
+  @else if $point == mobile {
+    @media (max-width: $size-mobile) { @content; }
+  }
+  
+}

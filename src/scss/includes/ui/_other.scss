@@ -1,0 +1,25 @@
+/*------------------------------------*\
+    #other UI components
+\*------------------------------------*/
+
+.loader {
+    font-family: $font-default;
+    height: 10px;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -5px;
+    position: absolute;
+    text-align: left;
+    top: 50%;
+    width: 30px;
+}
+
+.logo {
+    background: url('../images/logo.svg') no-repeat;
+    height: 28px;
+    overflow: hidden;
+    text-align: left;
+    text-indent: 200%;
+    white-space: nowrap;
+    width: 154px;
+}

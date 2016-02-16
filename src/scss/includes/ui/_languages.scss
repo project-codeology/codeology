@@ -1,0 +1,38 @@
+/*------------------------------------*\
+    #languages
+\*------------------------------------*/
+
+.language-list {
+    
+    @include breakpoint(desktop) {
+        @include column-count(4);
+        @include column-gap(20px);
+        font-size: 14px !important;
+        line-height: 22px !important;
+        margin-right: -30px;
+    }
+
+    @include breakpoint(mobile) {
+        @include column-count(3);
+        @include column-gap(22px);
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+
+
+.language {
+    white-space: nowrap;
+    cursor: default;
+    overflow: hidden;
+    span {
+        padding: 0 5px;
+    }
+    @include hover {
+        span {
+            color: $color-bg;
+            background: $color-text;
+        }
+    }
+}

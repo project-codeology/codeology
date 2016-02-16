@@ -1,0 +1,18 @@
+/*------------------------------------*\
+    #about
+\*------------------------------------*/
+
+.about {
+    
+    @include box-sizing;
+    width: 500px;
+    padding: 20px 60px 20px 20px;
+    background: $color-bg;
+
+    p, ul, ol {
+        @include size-in-ems(14,17);
+        @include user-select(text);   
+        margin-bottom: 17px;
+        position: relative;
+    }
+}

@@ -1,0 +1,52 @@
+/*------------------------------------*\
+    #MAIN
+\*------------------------------------*/
+
+
+
+body, html {
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+
+
+#container {
+    cursor: pointer;
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+
+
+#alphabetCanvas {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+}
+
+
+
+#ui {
+    @include breakpoint(desktop) {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+        &.is-shown {
+            @include transition(opacity 1s $easing 400ms);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+}
+
+
+
+// loading
+.wf-loading .container {
+    opacity: 0;
+}

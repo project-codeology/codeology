@@ -1,0 +1,75 @@
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+
+
+@mixin size-in-ems ($px, $line: $baseLineHeight, $parentPx: $baseFontSize, $parentLine: $baseFontSize) {
+    font-size: ($px / $baseFontSize) * $baseFontSize/$parentPx * 1em;
+    line-height: ($line / $px) * 1em;
+}
+
+@function z($list, $element) {
+    $z-index: index($list, $element);
+    @if $z-index {
+        @return $z-index;
+    }
+    @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+    @return null;
+}
+
+@mixin z-index($element,$list:$elements){
+    z-index: z($list, $element);
+}
+
+@mixin inline-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+@mixin box-sizing {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+@mixin user-select($us:none) {
+    -webkit-user-select: $us;
+    -khtml-user-select: $us;
+    -moz-user-select: $us;
+    -o-user-select: $us;
+    user-select: $us;
+}
+
+@mixin full {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@mixin column-count($c) {
+    -webkit-column-count: $c;
+    -moz-column-count: $c;
+    column-count: $c;
+}
+
+@mixin column-width($g) {
+    -webkit-column-width: $g;
+    -moz-column-width: $g;
+    column-width: $g;
+}
+
+@mixin column-gap($g) {
+    -webkit-column-gap: $g;
+    -moz-column-gap: $g;
+    column-gap: $g;
+}
+
+@mixin hover {
+    .no-touchevents &:hover,
+    .no-touch &:hover {
+        @content;
+    }
+}

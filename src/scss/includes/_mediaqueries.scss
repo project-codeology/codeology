@@ -1,0 +1,21 @@
+/*------------------------------------*\
+    #MEDIA QUERIES
+\*------------------------------------*/
+
+
+
+// Desktop
+@include breakpoint(desktop) {
+    body { font-size: #{$baseFontSize}px; }
+    body:before { content: "desktop"; display: none; }
+    .desktop-hide { display: none !important; }
+}
+
+
+// Mobile
+@include breakpoint(mobile) {
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-size: 14px; }
+    body:before { content: "mobile"; }
+    .mobile-hide { display: none !important; }
+}

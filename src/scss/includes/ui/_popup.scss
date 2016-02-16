@@ -1,0 +1,276 @@
+/*------------------------------------*\
+    #popup
+\*------------------------------------*/
+
+
+
+.popup {
+
+    @include box-sizing;
+    background: $color-bg;
+    background: rgba(0,0,0,.9);
+    display: none;
+    position: absolute;
+
+    .popup__wrap { @include full; }
+    .popup__inner { padding: $gutter; padding-right: 50px; }
+
+    @include z-index(popup);
+
+    @include breakpoint(desktop) {
+        left: 50%;
+        margin-left: -330px;
+        top: 50%;
+        width: 660px;
+
+        &#download {
+            width: 830px;
+            margin-left: -415px;
+        }
+    }
+
+    &.intro {
+        @include breakpoint(mobile) { .popup__copy { margin-right: 48px; }}
+        @include breakpoint(desktop) {
+            .logo {
+                background-image: url('../images/logo_intro.svg');
+                width: 230px;
+                height: 52px;
+            }
+            .popup__copy {
+                p, ul, ol {
+                    font-size: 17px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+
+    &.info {
+        margin-top: 0 !important;
+        position: absolute;
+        top: 70px;
+        bottom: 0;
+        left: 0;
+        margin-left: 0;
+        width: 100%;
+        @include breakpoint(desktop) {
+            width: 41%;
+            min-width: 710px;
+            &:after {
+                content:"";
+                display: block;
+                width: 1px;
+                top: 0;
+                bottom: 20px;
+                position: absolute;
+                background: $color-gray;
+                right: 0;
+            }
+            .popup__inner {
+                padding: 30px;
+            }
+            .popup__closer {
+                position: fixed;
+                right: $gutter;
+                @include breakpoint(desktop) { top: 80px; }
+                @include breakpoint(mobile) { top: 116px; }
+            }
+        }
+    }
+
+    &.braintree {
+        margin-top: 0 !important;
+        position: absolute;
+        top: 105px;
+        right: -12px+$gutter;
+        left: 0;
+        .popup__inner { padding-right: 10px; }
+        .popup__copy { margin-right: 0; }
+        @include breakpoint(desktop) {
+            left: auto;
+            width: 360px;
+            top: 56px;
+            .popup__inner { padding: 20px 20px 40px 20px; }
+            .popup__closer { top: 20px; }
+            .popup__title {
+                font-size: 25px;
+                line-height: 24px;
+            }
+            .popup__copy {
+                p, ul, ol {
+                    font-size: 15px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+    
+    @include breakpoint(mobile) {
+        margin-top: 0 !important;
+        top: 56px;
+        border-bottom: 1px solid $color-gray;
+        width: 100%;
+        .popup__inner { padding: 16px 10px 28px 10px; }
+        &.info {
+            top: 105px;
+        }
+    }
+}
+
+
+
+.needs-scroll,
+.has-scroll {
+    overflow: hidden;
+}
+
+
+
+.popup__title {
+    @include breakpoint(desktop) {
+        font-size: 47px;
+        line-height: 56px;
+        letter-spacing: 0;
+        margin-bottom: 20px;
+        .popup__copy + & { margin-top: 40px; }
+    }
+    @include breakpoint(mobile) {
+        font-size: 25px;
+        line-height: 23px;
+        margin-bottom: 20px;
+        .popup__copy + & { margin-top: 20px; }
+    }
+    font-weight: bold;
+    cursor: default;
+}
+
+.popup__title--center {
+    @include size-in-ems(26,30);
+    font-weight: bold;
+    cursor: default;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+
+.popup__copy {
+    @include user-select(text);
+
+    p, ul, ol {
+        
+        letter-spacing: -0.02em;
+        a { text-decoration: underline; }
+
+        @include breakpoint(desktop) {
+            & + p, & + ul, & + ol { margin-top: 24px; }
+            font-size: 19px;
+            line-height: 24px;
+        }
+        @include breakpoint(mobile) {
+            & + p, & + ul, & + ol { margin-top: 20px; }
+            font-size: 14px;
+            line-height: 17px;
+        }
+    }
+
+    .popup__copy + & {
+        @include breakpoint(mobile) { margin-top: 10px; }
+        @include breakpoint(desktop) { margin-top: 24px; }
+    }
+
+    &.typed {
+        @include breakpoint(mobile) { margin-top: 8px; }
+    }
+
+
+    #download & { text-align: center; }
+}
+
+
+
+.popup__bottom {
+    @include breakpoint(mobile) { margin-top: 28px; }
+    @include breakpoint(desktop) { margin-top: 40px; }
+}
+
+
+
+.popup__form, .popup__explore {
+    @include box-sizing;
+    @include breakpoint(desktop) {
+        @include inline-block;
+        width: 50%;
+    }
+}
+
+
+.popup__form {
+    @include breakpoint(desktop) {
+        padding-right: 40px;
+    }
+}
+
+
+
+.popup__explore {
+    @include breakpoint(desktop) {
+        padding-left: 40px;
+    }
+    @include breakpoint(mobile) {
+        margin-top: 10px;
+    }
+    a { display: block; }
+}
+
+
+
+.popup__closer {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+
+.popup__colophon {
+    font-size: 13px;
+    line-height: 16px;
+    @include breakpoint(mobile) { margin-top: 26px; }
+    @include breakpoint(desktop) { margin-top: 40px; }
+    a { @include hover { text-decoration: underline; }}
+}
+
+
+
+#getlink {
+    .getlink__input {
+        width: 432px;
+        display: block;
+        margin: auto;
+        position: relative;
+        text-align: center;
+
+        input {
+            width: 410px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .icon-link {
+            border: 1px solid $color-line;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $color-bg;
+        }
+
+        a {
+            margin-bottom: 20px;
+            @include hover {
+                text-decoration: underline;
+            }
+        }
+        
+    }
+}

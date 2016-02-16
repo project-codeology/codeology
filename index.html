@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <title>Codeology</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/dist/css/style.css">
+
+    </head>
+
+    <body>
+
+        <div id="container"></div>
+        <div class="loader">&nbsp;</div>
+
+        <!-- intro popup -->
+        <div class="intro popup" id="intro">
+            <div class="popup__inner">
+                <h1 class="popup__title  mobile-hide"><div class="logo">Codeology</div></h1>
+                <div class="popup__copy">
+                    <p>Codeology is an open-source project that brings to life the art and science of code. An algorithm analyzes Github projects and creates unique organic forms based on the codebase size and language. As no two pieces of code are alike, no two Codeology forms are alike.</p>
+                </div>
+                <div class="popup__bottom">
+                    <div class="popup__form">
+                        <div class="search">
+                            <div class="search__icon button"><i class="icon-search">Search</i></div>
+                            <input type="search" class="search__input js-search" value="Find a Github user"/>
+                            <ul class="search__list js-search-list"></ul>
+                        </div>
+                    </div><!--
+                    --><div class="popup__explore">
+                        <a href="#" class="button--text js-explore"><span data-text="Start exploring">Start exploring</span></a>
+                    </div>
+                    <p class="popup__colophon mobile-hide"><a href="https://www.braintreepayments.com" target="_blank">Made possible by <strong>Braintree</strong></a></p>
+                </div>
+            </div>
+            <button class="popup__closer js-close-intro"><i class="icon-close">Close</i></button>
+        </div>
+
+        <!-- no results popup -->
+        <div class="noresults popup" id="noresults">
+            <div class="popup__inner">
+                <div class="popup__copy typed">
+                    <p></p>
+                </div>
+                <div class="popup__bottom">
+                    <div class="popup__form">
+                        <div class="search">
+                            <div class="search__icon button"><i class="icon-search">Search</i></div>
+                            <input type="search" class="search__input js-search" value="Find a Github user"/>
+                            <ul class="search__list js-search-list"></ul>
+                        </div>
+                    </div><!--
+                    --><div class="popup__explore">
+                        <a href="#" class="button--text js-explore"><span data-text="Start exploring">Start exploring</span></a>
+                    </div>
+                </div>
+            </div>
+            <button class="popup__closer js-close-intro"><i class="icon-close">Close</i></button>
+        </div>
+
+        <!-- about project popup -->
+        <div class="info popup" id="info">
+            <div class="popup__wrap needs-scroll">
+                <div class="popup__inner">
+                    <h2 class="popup__title">What it is</h2>
+                    <div class="popup__copy">
+                        <p>Codeology is an open-source project that reimagines code by bringing it to life visually. The combination of coding languages in each Github project determines its look, therefore, each creation is original.</p>
+                    </div>
+                    <h2 class="popup__title">How it works</h2>
+                    <div class="popup__copy">
+                        <p>The application pulls data from Github’s public API and creates visuals using WebGL, ThreeJS, and GLSL Shaders. Shape and color represent an individual language, with size being proportionate to how many lines of code are written. In its current form, Codeology recognizes and uniquely renders the following languages:</p>
+                        <p class="mobile-hide"><small>&gt; Roll over to see individual shapes</small></p>
+                        <p class="desktop-hide"><small>&gt; View on desktop for the full experience</small></p>
+                        <ul class="language-list"></ul>
+                        <p><a href="" target="_blank" class="button--textsmall"><span data-text="Fork Codeology on Github">Fork Codeology on Github</span></a></p>
+                    </div>
+                </div>
+            </div>
+            <button class="popup__closer js-toggle-info"><i class="icon-close">Close</i></button>
+        </div>
+
+        <!-- get link popup -->
+        <div class="popup" id="getlink">
+            <div class="popup__inner">
+                <div class="getlink__input">
+                    <input type="text" readonly id="js-getlink-input"/><i class="icon-link"></i>
+                    <a href="#" class="js-copy"><strong>Copy link</strong></a>
+                </div>
+            </div>
+            <button class="popup__closer js-getlink"><i class="icon-close">Close</i></button>
+        </div>
+
+        <!-- download popup -->
+        <div class="popup" id="download">
+            <div class="popup__inner">
+                <h2 class="popup__title--center">Click to download Wallpaper</h2>
+                <ul class="download__list">
+                    <li class="download__item"><a href="" download target="_blank"><img id="wallpaper0" src="" width="200" height="100"></a></li><!--
+                 --><li class="download__item"><a href="" download target="_blank"><img id="wallpaper1" src="" width="200" height="100"></a></li><!--
+                 --><li class="download__item"><a href="" download target="_blank"><img id="wallpaper2" src="" width="200" height="100"></a></li><!--
+                 --><li class="download__item"><a href="" download target="_blank"><img id="wallpaper3" src="" width="200" height="100"></a></li><!--
+                 --><li class="download__item"><a href="" download target="_blank"><img id="wallpaper4" src="" width="200" height="100"></a></li><!--
+                 --><li class="download__item"><a href="" download target="_blank"><img id="wallpaper5" src="" width="200" height="100"></a></li>
+                </ul>
+                <div class="popup__copy">
+                    <p><a href="#" class="button--text js-refresh"><span data-text="Refresh">Refresh</span></a></p>
+                </div>
+            </div>
+            <button class="popup__closer js-toggle-download"><i class="icon-close">Close</i></button>
+        </div>
+
+        <!-- about Braintree popup -->
+        <div class="popup braintree" id="braintree">
+            <div class="popup__inner">
+                <h2 class="popup__title">Braintree</h2>
+                <div class="popup__copy">
+                    <p>Braintree builds products that make payments easier &mdash; so&nbsp;easy that they fade into the background and enable beautiful commerce experiences to&nbsp;flourish. Everything we've ever made is&nbsp;with developers in&nbsp;mind, so&nbsp;you'll get a&nbsp;simple integration, robust documentation, and&nbsp;stellar support all on&nbsp;your path to&nbsp;accepting every way to&nbsp;pay.</p>
+                    <p><br/><a href="https://www.braintreepayments.com/" class="button--textsmall" target="_blank"><span data-text="Learn more">Learn more</span></a></p>
+                </div>
+            </div>
+            <button class="popup__closer js-toggle-braintree"><i class="icon-close">Close</i></button>
+        </div>
+
+
+        <div id="ui" class="ui">
+
+            <!-- header -->
+            <div class="header">
+                <div class="header__left mobile-hide">
+                    <div class="header__title  js-home"><div class="logo">Codeology</div></div><!--
+                 --><ul class="header__breadcrumbs breadcrumbs"></ul><!--
+                 --><div class="header__search search">
+                        <div class="search__icon button"><i class="icon-search">Search</i></div>
+                        <input type="search" class="search__input js-search" value="Find a Github user"/>
+                        <ul class="search__list js-search-list"></ul>
+                    </div>
+                </div>
+                <div class="header__right mobile-hide">
+                    <nav class="header__links  js-header-links">
+                        <li class="header__link">
+                            <a href="#" class="header__link  js-toggle-info">About the project</a>
+                        </li><!--
+                     --><li class="header__link dropdown">
+                            <a href="#" class="header__link  js-toggle-braintree">About Braintree</a>
+                        </li>
+                    </nav>
+                </div>
+                <div class="header__top desktop-hide">
+                    <div class="header__title  js-home"><div class="logo">Codeology</div></div>
+                    <div class="header__colophon "><a href="#" target="_blank" class="js-toggle-braintree"><strong>About Braintree</strong></a></div>
+                </div>
+                <div class="header__bottom desktop-hide">
+                    <a href="#" class="header__info  button  js-toggle-info"><i class="icon-info"></i></a><!--
+                 --><ul class="header__breadcrumbs  breadcrumbs"></ul><!--
+                 --><div class="header__search  search">
+                        <div class="search__icon button"><i class="icon-search">Search</i></div>
+                        <input type="search" class="search__input  js-search" value="Find a Github user"/>
+                        <ul class="search__list  js-search-list"></ul>
+                    </div><!--
+                 --><a href="#" class="header__share  button  js-share"><i class="icon-share"></i></a>
+                </div>
+                <ul class="header__share-list js-mobile-share desktop-hide"></ul>
+            </div>
+
+            <!-- buttons -->
+            <div class="fullscreen button mobile-hide"><i class="icon-fullscreen">Fullscreen</i></div>
+            <div class="grid button mobile-hide"><i class="icon-grid">Grid</i></div>
+
+            <!-- descriptions -->
+            <div id="descmain" class="grid__item  grid__item--full  desc"></div>
+            <div id="desc0" class="grid__item  desc"></div>
+            <div id="desc1" class="grid__item  desc"></div>
+            <div id="desc2" class="grid__item  desc"></div>
+            <div id="desc3" class="grid__item  desc"></div>
+            <div id="desc4" class="grid__item  desc"></div>
+            <div id="desc5" class="grid__item  desc"></div>
+            <div id="desc6" class="grid__item  desc"></div>
+            <div id="desc7" class="grid__item  desc"></div>
+            <div id="desc8" class="grid__item  desc"></div>
+        </div>
+
+        <!-- original shader by https://github.com/pnitsch -->
+        <script type="x-shader/x-vertex" id="vertexShader">
+            varying vec2 vUv;
+
+            void main() {
+                vUv = uv; 
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+            }
+        </script>
+
+        <script type="x-shader/x-vertex" id="fragmentShader">
+            varying vec2 vUv;
+
+            uniform float mode;
+            uniform float rx;
+            uniform float ry; 
+            uniform float charMapSize;
+            uniform float numChars;
+            uniform sampler2D inputTexture;
+            uniform sampler2D asciiTexture;
+            uniform sampler2D hashTexture;
+            uniform vec2 fontSize;
+            vec2 imageSize = vec2(500.0, 500.0);
+            vec2 canvasSize = vec2(500.0, 500.0);   
+
+            const float contrast = 0.0;
+            const float colorDepth = 255.0/16.0;
+            const vec2 hashSize = vec2(256.0, 256.0);
+
+            vec4 pix = vec4(0.0, 0.0, 0.0, 0.0);
+            vec4 key = vec4(0.0, 0.0, 0.0, 0.0);
+
+            float h_fs_x, h_fs_y;
+
+            float packColor(vec4 color) {   
+                return (color.r + (color.g*256.0) + (color.b*256.0*256.0) + (color.a*256.0*256.0*256.0));
+            }
+
+            vec4 contrastPix(float _x, float _y) {
+                float factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
+                vec4 p = texture2D(inputTexture, vec2(_x, _y));
+                p.r = (factor * ((p.r*255.0) - 128.0) + 128.0)/255.0;
+                p.g = (factor * ((p.g*255.0) - 128.0) + 128.0)/255.0;
+                p.b = (factor * ((p.b*255.0) - 128.0) + 128.0)/255.0;
+                p.a = 1.0;
+
+                return p;
+            }
+
+            void sampleRegion(float x, float y) {
+                vec4 c1, c2, c3, c4;
+
+                c1 = contrastPix(x, y);
+                key.r += (c1.r + c1.g + c1.b)/3.0;
+
+                c2 = contrastPix(x+h_fs_x, y);
+                key.g += (c2.r + c2.g + c2.b)/3.0;  
+
+                c3 = contrastPix(x, y+h_fs_y);
+                key.b += (c3.r + c3.g + c3.b)/3.0;
+
+                c4 = contrastPix(x+h_fs_x, y+h_fs_y);
+                key.a += (c4.r + c4.g + c4.b)/3.0;
+
+                c1.r = (floor((c1.r*255.0)/colorDepth)*colorDepth)/255.0;
+                c1.g = (floor((c1.g*255.0)/colorDepth)*colorDepth)/255.0;
+                c1.b = (floor((c1.b*255.0)/colorDepth)*colorDepth)/255.0;
+                pix.rgb += c1.rgb;
+            }
+
+            void analyseQuads(vec2 _offset) {
+                h_fs_x = (fontSize.x*0.5)/imageSize.x;
+                h_fs_y = (fontSize.y*0.5)/imageSize.y;
+
+                float increment = 1.0/imageSize.y;
+                float y=_offset.y;
+                float x=_offset.x;
+
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                x=_offset.x; y+=increment;
+
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                x=_offset.x; y+=increment;
+
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                x=_offset.x; y+=increment;
+
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                sampleRegion(x, y); x+=increment;
+                x=_offset.x; y+=increment;
+
+                pix /= 16.0;
+                key = floor(key)/16.0;
+            }
+
+            void main(void) {
+
+                imageSize.x = rx;
+                canvasSize.x = rx;
+                imageSize.y = ry;
+                canvasSize.y = ry;
+
+                ivec2 ioffset = ivec2(gl_FragCoord.xy/fontSize.xy);
+                ioffset *= ivec2(fontSize.xy);
+                vec2 offset = vec2(ioffset);
+                offset /= canvasSize;
+
+                analyseQuads(offset);
+                float index = packColor( key )/256.0;
+                float hash_x = mod(index, hashSize.x); 
+                float hash_y = (index-hash_x)/hashSize.x;
+
+                vec4 char_pix = texture2D(hashTexture, vec2(hash_x/256.0, hash_y/256.0));
+                float ch = floor((char_pix.g)*255.0);
+
+                vec2 pos = mod(gl_FragCoord.xy, fontSize.xy);
+                pos = pos / vec2(fontSize.x*numChars, fontSize.y);
+                pos.x += ((floor(ch)*fontSize.x)/charMapSize);
+                pos.y = 1.0 - pos.y;
+
+                vec4 ascii_pix = vec4(texture2D(asciiTexture, pos).rgb, 1.0);
+
+
+                if(ascii_pix.r > 0.0 || mode!=6.0) {
+                    if(mode==5.0) ascii_pix.rgb = pix.rgb;
+                    else if(mode==1.0) ascii_pix.rgb = vec3(pix.g*0.1*ascii_pix.r, pix.g*ascii_pix.g, pix.g*0.1*ascii_pix.b);
+                    else if(mode==2.0) ascii_pix.rgb = vec3(1.0-ascii_pix.r,1.0-ascii_pix.g,1.0-ascii_pix.b);
+                    else if(mode==3.0) ascii_pix.rgb = vec3(1.0-pix.r*ascii_pix.r,1.0-pix.g*ascii_pix.g,1.0-pix.b*ascii_pix.b);
+                    else if(mode==4.0) ascii_pix.rgb = vec3(1.0-char_pix.g*ascii_pix.r, 1.0-char_pix.g*ascii_pix.g, 1.0-char_pix.g*ascii_pix.b);
+                    else if(mode==7.0) ascii_pix.rgb = vec3(pix.g*50.0/255.0*ascii_pix.r, pix.g*161.0/255.0*ascii_pix.g, pix.g*199.0/255.0*ascii_pix.b);
+                    else if(mode==8.0) ascii_pix.rgb = vec3(pix.r*ascii_pix.r, pix.g*ascii_pix.g*offset.x, pix.b*ascii_pix.b*offset.y);
+                    else if(mode==9.0) ascii_pix.rgb = vec3(1.0-pix.r*ascii_pix.r*offset.x, 1.0-pix.g*ascii_pix.g*offset.x, 1.0-pix.b*ascii_pix.b*offset.y);
+                    else if(mode==0.0) ascii_pix.rgb = vec3(pix.r*ascii_pix.r, pix.g*ascii_pix.g,pix.b*ascii_pix.b);
+                } 
+
+                gl_FragColor = ascii_pix;
+            }
+        </script>
+        
+        <script src="/dist/js/libs.min.js"></script>
+        <script src="/dist/js/scripts.min.js"></script>
+
+    </body>
+
+</html>

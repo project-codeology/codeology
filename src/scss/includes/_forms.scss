@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    #FORM COMPONENTS
+\*------------------------------------*/
+
+
+
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0 50px #ffffff inset; }
+
+
+
+::-webkit-input-placeholder {
+    color: $color-text;
+    opacity: 1 !important;
+}
+
+
+
+textarea,
+input[type=text],
+input[type=search] {
+    border: 1px solid $color-line;
+    font-size: 15px;
+    height: 26px;
+    line-height: 26px;
+}

@@ -1,0 +1,113 @@
+/*------------------------------------*\
+    #search
+\*------------------------------------*/
+
+
+
+.search {
+    position: relative;
+    height: 28px;
+    text-align: center;
+    &.header__search {
+        text-align: left;
+    }
+}
+
+
+
+.search__input {
+    @include box-sizing;
+    display: block;
+    width: 100%;
+    padding-left: 7px;
+    height: 28px !important;
+    text-align: inherit !important;
+    @include breakpoint(desktop) { padding-right: 26px; }
+    @include breakpoint(mobile) { padding-right: 7px; }
+}
+
+
+
+.search__icon {
+    border-left: 1px solid $color-line;
+    background: $color-bg;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+
+
+.search__list {
+    @include box-sizing;
+    background: $color-bg;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: $color-line;
+    right: 27px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+
+    @include breakpoint(mobile) {
+        .header__search & {
+            top: 43px;
+            border-color: $color-gray;
+            border-width: 0 0 1px 0;
+            width: auto;
+            left: -50px;
+            right: -50px;
+        }
+    }
+
+    #ui:not(.is-shown) &,
+    &:empty { display: none; }
+}
+
+
+
+.search__item {
+    position: relative;
+    z-index: 1;
+    a, q {
+        font-size: 15px;
+        line-height: 30px;
+        padding: 0 7px;
+        position: relative;
+        display: block;
+        @include breakpoint(mobile) {
+            line-height: 50px;
+            padding: 0 60px;
+        }
+    }
+    a {
+        &:after {
+            content: "";
+            height: 1px;
+            left: 0;
+            right: 0;
+            position: absolute;
+            direction: block;
+            background: $color-gray;
+            z-index: -1;
+            @include breakpoint(mobile) {
+                left: 50px;
+                right: 50px;
+            }
+        }
+
+        .no-touch &:hover,
+        .no-touchevents &:hover,
+        &:focus {
+            background: $color-text;
+            color: $color-bg;
+        }
+    }
+    q {
+        color: $color-gray;
+        cursor: default;
+    }
+    &:first-child a:after { display: none; }
+}
