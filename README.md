@@ -2,7 +2,7 @@
 Codeology brings to life the art and science of code. An algorithm analyzes GitHub projects and creates unique organic forms based on the codebase size and language. As no two pieces of code are alike, no two Codeology forms are alike.
 
 ## How it works
-The application pulls data from GitHub’s public API and creates visuals using WebGL, Three.js, and GLSL Shaders. Shape and color represent an individual language, with size being proportionate to how many lines of code were written.
+The application pulls data from GitHub’s public API and creates visuals using WebGL, Three.js, and GLSL Shaders. Shape and color represent an individual language, with size being proportionate to how many characters of code were written.
 
 ### Setting up node modules
 
